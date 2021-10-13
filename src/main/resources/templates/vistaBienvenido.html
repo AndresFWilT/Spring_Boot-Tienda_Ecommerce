@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>CRUD con Spring</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <h1 class='text-center title'>¡Bienvenido al Sistema!</h1>
+        </br>
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Agregar</h5>
+                        <p class="card-text">Agrega elementos a nuestro servicio</p>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="/" class="btn btn-outline-success text-center text-uppercase" th:href="@{/crear/factura}">Factura</a>
+                        <a href="/" class="btn btn-outline-success text-center text-uppercase" th:href="@{/crear/producto}">Producto</a>
+                        <a href="/" class="btn btn-outline-success text-center text-uppercase" th:href="@{/crear/vendedor}">Vendedor</a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Visualizar</h5>
+                        <p class="card-text">Visualiza las tablas del sistema</p>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="#" class="btn btn-outline-primary text-center text-uppercase" th:href="@{/facturas}">factura</a>
+                            <a href="#" class="btn btn-outline-primary text-center text-uppercase" th:href="@{/productos}">producto</a>
+                            <a href="#" class="btn btn-outline-primary text-center text-uppercase" th:href="@{/vendedores}">vendedor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="margin:auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Eliminar/Actualizar</h5>
+                        <p class="card-text">Elimina o actualiza elementos de nuestro servicio</p>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="#" class="btn btn-outline-danger text-center text-uppercase" th:href="@{/editar/factura}">factura</a>
+                            <a href="#" class="btn btn-outline-danger text-center text-uppercase" th:href="@{/editar/producto}">producto</a>
+                            <a href="#" class="btn btn-outline-danger text-center text-uppercase" th:href="@{/editar/vendedor}">vendedor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

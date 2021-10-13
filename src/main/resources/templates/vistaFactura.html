@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Listado Facturas</title>
+        <meta charset="UTF-8"> </meta>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <a href="#" class="btn btn-secondary text-center text-uppercase" style="position:fixed;top:0;left:0;" th:href="@{/bienvenido}">Regresar</a>
+        <h1 class='text-center text-uppercase'>Tabla Facturas</h1>
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th># Factura</th>
+                    <th>Codigo producto</th>
+                    <th>Fecha</th>
+                    <th>Codigo vendedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="factura: ${facturas}">
+                    <td th:text="${factura.numeroFactura}" />
+                    <td th:text="${factura.producto.codProducto}" />
+                    <td th:text="${factura.fechaVenta}" />
+                    <td th:text="${factura.vendedor.codVendedor}" />
+                </tr>
+            </tbody>
+        </table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

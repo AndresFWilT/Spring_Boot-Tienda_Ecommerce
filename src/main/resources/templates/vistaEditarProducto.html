@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edicion de Productos</title>
+        <meta charset="UTF-8"> </meta>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <!--Link CDN obtenido de bootstap ICON-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    </head>
+    <body>
+        <a href="#" class="btn btn-secondary text-center text-uppercase" style="position:fixed;top:0;left:0;" th:href="@{/bienvenido}">Regresar</a>
+        <h1 class='text-center text-uppercase'>Editar productos</h1>
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto: ${productos}">
+                    <td th:text="${producto.codProducto}" />
+                    <td th:text="${producto.nombreProducto}" />
+                    <td th:text="${producto.descripcionProducto}" /> 
+                    <td th:text="${producto.precioProducto}" />
+                    <td><a href="#" class="btn btn-warning text-center text-uppercase" th:href="@{/actualizar/producto(codProducto=${producto.codProducto})}"><i class="bi bi-pencil-fill"></i></a> </td>
+                        <td><a href="#" class="btn btn-danger text-center text-uppercase" th:href="@{/eliminar/producto(codProducto=${producto.codProducto})}"><i class="bi bi-trash-fill"></i></a> </td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

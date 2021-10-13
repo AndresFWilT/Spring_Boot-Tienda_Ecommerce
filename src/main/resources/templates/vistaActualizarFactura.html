@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Cear Factura</title>
+        <meta charset="UTF-8"> </meta>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <a href="#" class="btn btn-secondary text-center text-uppercase" style="position:fixed;top:0;left:0;" th:href="@{/bienvenido}">Regresar</a>
+        <h1 class="text-center">Actualizar Factura</h1>
+        <br/>
+            <div class="card text-center" style="width: 18rem;margin:auto;">
+                <form th:action = "@{/crear/factura}" th:object="${factura}" method="post" class="text-center">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            <label> Número de factura </label>
+                            <input id = "numerofactura" type="text" th:field ="*{numeroFactura}"/>
+                        </li> 
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <label> Código del Producto </label>
+                            <input id = "codigoproducto" type="text" th:field ="*{codigoProducto}"/>
+                        </li> 
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <label> Fecha de venta  </label>
+                            <input id = "fecha" type="date" th:field = "*{fechaVenta}"/>
+                        </li> 
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <label> Código del Vendedor</label>
+                            <input id = "codigovendedor" type="text" th:field = "*{codigoVendedor}"/> 
+                        </li> 
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <label> Precio del Producto ($)</label>
+                            <input id = "valorfactura" type="text" th:field = "*{valorFactura}"/>
+                        </li> 
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <button type = "submit" class="btn btn-success">Editar Factura</button>
+                        </li> 
+                    </ul>  
+                </form>
+            </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

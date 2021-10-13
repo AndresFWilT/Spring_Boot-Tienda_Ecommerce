@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Creacion Vendedores</title>
+        <meta charset="UTF-8"> </meta>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <a href="#" class="btn btn-secondary text-center text-uppercase" style="position:fixed;top:0;left:0;" th:href="@{/bienvenido}">Regresar</a>
+        <h1 class="text-center">Forma para creación de Vendedores</h1>
+        <br/>
+        <div class="card text-center" style="width: 18rem;margin:auto">
+            <form th:action = "@{/crear/vendedor}" th:object="${vendedor}" method="post">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <label> Código del Vendedor</label>
+                        <input id = "codigovendedor" type="text" th:field ="*{codVendedor}"/>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <label> Nombre del Vendedor</label>
+                        <input id = "nombrevendedor" type="text" th:field = "*{nombreVendedor}"/>
+                    </li>
+                </ul>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <button class="btn btn-success" type = "submit">Agregar Vendedor</button> 
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

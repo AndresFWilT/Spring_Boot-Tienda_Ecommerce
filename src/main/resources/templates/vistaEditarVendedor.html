@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+        <title>Edicion de Vendedores</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <!--Link CDN obtenido de bootstap ICON-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    </head>
+
+    <body>
+        <a href="#" class="btn btn-secondary text-center text-uppercase" style="position:fixed;top:0;left:0;" th:href="@{/bienvenido}">Regresar</a>
+        <h1 class='text-center text-uppercase'>Editar vendedores</h1>
+        <table class="table table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre vendedor</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vendedor: ${vendedores}">
+                    <td th:text="${vendedor.codVendedor}" />
+                    <td th:text="${vendedor.nombreVendedor}" />
+                    <td><a href="#" class="btn btn-warning text-center text-uppercase" th:href="@{/actualizar/vendedor(codVendedor=${vendedor.codVendedor})}"><i class="bi bi-pencil-fill"></i></a> </td>
+                        <td><a href="#" class="btn btn-danger text-center text-uppercase" th:href="@{/eliminar/vendedor(codVendedor=${vendedor.codVendedor})}"><i class="bi bi-trash-fill"></i></a> </td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>
