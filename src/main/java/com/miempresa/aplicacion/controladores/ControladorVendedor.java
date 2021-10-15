@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import com.miempresa.aplicacion.modelos.VendedorDAO;
+import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -50,6 +51,7 @@ public class ControladorVendedor {
     @PostMapping("/crear/vendedor")
     public RedirectView procesarVendedor(@ModelAttribute Vendedor vendedor, RedirectAttributes attribute) {
         try {
+            //Validaciones basicas
             if (vendedor.getCodVendedor().equals("") || vendedor.getCodVendedor().equals(null)) {
                 attribute.addFlashAttribute("error", "No agregaste un codigo para el vendedor");
                 return new RedirectView("/crear/vendedor/", true);
@@ -57,11 +59,19 @@ public class ControladorVendedor {
                 attribute.addFlashAttribute("error", "No agregaste un nombre para el vendedor");
                 return new RedirectView("/crear/vendedor/", true);
             }
+            //Validacion de factura ya repetida
+            Vendedor ven = repositorioVendedor.findByCodVendedor(vendedor.getCodVendedor());
+            if(!Objects.isNull(ven)){
+                attribute.addFlashAttribute("error", "Codigo del vendedor ya esta registrado");
+                return new RedirectView("/crear/vendedor/", true);
+            }
+            //Hechas las validaciones se pasa a guardar el vendedor
             Vendedor vendedorGuardado = repositorioVendedor.save(vendedor);
             if (vendedorGuardado == null) {
                 attribute.addFlashAttribute("error", "No se pudo agregar al vendedor");
                 return new RedirectView("/crear/vendedor/", true);
             }
+            attribute.addFlashAttribute("success", "¡Vendedor creado con exito!");
             return new RedirectView("/vendedores/", true);
         } catch (Exception e) {
             attribute.addFlashAttribute("error", "No se pudo agregar al vendedor, revisa los campos");
@@ -111,7 +121,8 @@ public class ControladorVendedor {
                 attribute.addFlashAttribute("error", "No se pudo guardar al vendedor");
                 return new RedirectView("../actualizar/vendedor?codVendedor=" + this.venSelec, true);
             }
-            return new RedirectView("../vendedores", true);
+            attribute.addFlashAttribute("success", "¡vendedor actualizado!");
+            return new RedirectView("../editar/vendedor", true);
         } catch (Exception e) {
             return new RedirectView("redirect:../", true);
         }

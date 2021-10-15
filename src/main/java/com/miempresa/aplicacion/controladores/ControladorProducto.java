@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import com.miempresa.aplicacion.modelos.ProductoDAO;
+import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -70,10 +71,18 @@ public class ControladorProducto {
                 attribute.addFlashAttribute("error", "No agregaste una valor valido al producto");
                 return new RedirectView("/crear/producto/", true);
             }
+            //Validacion de factura ya repetida
+            Producto pro = repositorioProducto.findByCodProducto(codPro);
+            if(!Objects.isNull(pro)){
+                attribute.addFlashAttribute("error", "Codigo del producto ya esta registrado");
+                return new RedirectView("/crear/producto/", true);
+            }
+            //Hechas las validaciones, se pasa a guardar el producto
             Producto productoGuardado = repositorioProducto.save(producto);
             if (productoGuardado == null) {
                 return new RedirectView("/crear/producto/", true);
             }
+            attribute.addFlashAttribute("success", "¡Producto creado con exito!");
             return new RedirectView("/productos/", true);
         } catch (Exception e) {
             attribute.addFlashAttribute("error", "No se pudieron agregar productos, revisa los campos");
@@ -134,10 +143,11 @@ public class ControladorProducto {
             //Se hace el update
             Producto productoGuardado = repositorioProducto.save(p);
             if (productoGuardado == null) {
-                attribute.addFlashAttribute("error", "No se pudo guardar el producto");
+                attribute.addFlashAttribute("error", "¡No se pudo guardar el producto!");
                 return new RedirectView("../actualizar/producto?codProducto=" + this.codPro, true);
             }
-            return new RedirectView("../productos", true);
+            attribute.addFlashAttribute("success", "¡Producto actualizado!");
+            return new RedirectView("../editar/producto", true);
         } catch (Exception e) {
             return new RedirectView("redirect:../", true);
         }
