@@ -15,16 +15,18 @@
                 <tr>
                     <th># Factura</th>
                     <th>Codigo producto</th>
-                    <th>Fecha</th>
                     <th>Codigo vendedor</th>
+                    <th>Fecha</th>
+                    <th>Valor factura</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="factura: ${facturas}">
                     <td th:text="${factura.numeroFactura}" />
                     <td th:text="${factura.producto.codProducto}" />
-                    <td th:text="${factura.fechaVenta}" />
                     <td th:text="${factura.vendedor.codVendedor}" />
+                    <td th:text="${factura.fechaVenta}"/>
+                    <td th:text="${factura.valorFactura}"/>
                 </tr>
             </tbody>
         </table>
