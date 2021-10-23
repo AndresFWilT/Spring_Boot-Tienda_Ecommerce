@@ -4,15 +4,20 @@ spring:
     thymeleaf:
         prefix: file:src/main/resources/templates/
     jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-        #database-platform: org.hibernate.dialect.MySQLDialect
+        #database-platform: org.hibernate.dialect.PostgreSQLDialect
+        database-platform: org.hibernate.dialect.MySQL5Dialect
         open-in-view: false
+        show-sql: true
         hibernate:
-            ddl-auto: none
+            ddl-auto: update
+            format-sql: true
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     datasource:
-        driver-class-name: org.postgresql.Driver
-        #driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:postgresql://localhost:5432/p_ventas
-        #url: jdbc:mysql://localhost:3307/p_ventas
-        username: mintic_unal
-        password: Curso2021
+        #driver-class-name: org.postgresql.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/erika
+        #url: jdbc:mysql://localhost:3307/p_erika
+        username: root
+        password: 1234
+        

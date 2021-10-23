@@ -1,0 +1,32 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:text": {
+            "context": "p"
+        },
+        "th:include": {
+            "context": "div"
+        },
+        "th:src": {
+            "context": "script"
+        },
+        "th:action": {
+            "context": "form"
+        },
+        "th:href": {
+            "context": "link"
+        },
+        "th:each": {
+            "context": "div"
+        },
+        "th:fragment": {
+            "context": "div"
+        },
+        "th:field": {
+            "context": "input"
+        },
+        "th:value": {
+            "context": "input"
+        }
+    }
+}

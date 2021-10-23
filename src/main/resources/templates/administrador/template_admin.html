@@ -1,0 +1,51 @@
+<!-- Navigation -->
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/administrador}">Nombre de la tienda</a>
+
+            <form class="form-inline my-2 my-lg-0" method="post" action="#">
+                <input class="form-control mr-sm-2 text-center" type="search"
+                       placeholder="Buscar" aria-label="Search" name="nombre"
+                       autocomplete="off">
+                <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown"><a
+                            class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"> <i class="bi bi-display"></i> </a>
+                        <div class="dropdown-menu"
+                             aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item btn btn-primary" th:href="@{/productos}"><i class="bi bi-clipboard"></i> Productos</a> 
+                            <a class="dropdown-item btn btn-warning" th:href="@{/administrador/usuarios}"><i class="bi bi-people"></i> Usuarios</a>
+                            <a class="dropdown-item btn btn-success" th:href="@{/administrador/ordenes}"><i class="bi bi-cart-check"></i> Ordenes</a>
+                            <a class="dropdown-item btn btn-danger" th:href="@{/usuario/cerrar}"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                        </div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+
+
+<!-- Footer -->
+<div th:fragment="footer">
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; nombre tienda</p>
+            <p class="text-muted ml-1 text-center">AndresFWilT</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+</div>
