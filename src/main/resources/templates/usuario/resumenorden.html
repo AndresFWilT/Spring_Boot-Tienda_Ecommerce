@@ -26,7 +26,10 @@
     <body>
 
         <!-- Navigation -->
-        <div th:include="usuario/template_usuario.html::header"></div>
+        <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	
+        </div>
+
+        <div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
 
         <!-- Page Content -->
         <div class="container">
@@ -37,6 +40,7 @@
 
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/getCart}">Carrito</a></li>
                 <li class="breadcrumb-item active">Orden</li>
             </ol>
 

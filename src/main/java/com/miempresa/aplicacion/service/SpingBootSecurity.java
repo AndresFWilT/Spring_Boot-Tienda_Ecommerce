@@ -24,8 +24,8 @@ public class SpingBootSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
-        /*http.csrf().disable().authorizeRequests()
+        /*
+        http.csrf().disable().authorizeRequests()
                 .antMatchers("/administrador**").hasRole("ADMIN")
                 .antMatchers("/productos**").hasRole("ADMIN")
                 .and().formLogin().loginPage("/usuario/login")

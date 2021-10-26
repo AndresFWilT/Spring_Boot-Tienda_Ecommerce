@@ -21,16 +21,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
 
     </head>
-
     <body>
-
         <!-- Navigation -->
-        <div th:include="usuario/template_usuario.html::header"></div>
+        <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}"></div>
+        <div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
 
         <!-- Page Content -->
         <div class="container">
-
-
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3">
                 Nombre tienda <small>Producto</small>
@@ -61,12 +58,10 @@
                                         <p th:text=" 'Descripción: '+ ${producto.descripcion} "></p>
                                     </li>
                                     <li class="list-group-item"><h6>
-                                            Cantidad: <input type="number" id="cantidad" name="cantidad"
+                                            Cantidad: <input class="text-center"type="number" id="cantidad" name="cantidad"
                                                              autocomplete="off" min="1" max="5" value="1">
                                         </h6></li>
                                 </ul>
-
-
                                 <button type="submit" class="btn btn-dark">Añadir al
                                     carrito</button>
 

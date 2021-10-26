@@ -29,6 +29,7 @@ import com.miempresa.aplicacion.service.IOrdenService;
 import com.miempresa.aplicacion.service.IUsuarioService;
 import com.miempresa.aplicacion.service.ProductoService;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -68,9 +69,9 @@ public class HomeController {
     }
 
     @GetMapping("productohome")
-    public String productoHome(@ModelAttribute Producto producto,Model model,HttpSession session) {
+    public String productoHome(@ModelAttribute Producto producto, Model model, HttpSession session) {
         this.id = producto.getId();
-        log.info(""+this.id);
+        log.info("" + this.id);
         log.info("Id producto enviado como parámetro {}", id);
         Optional<Producto> productoOptional = productoService.get(id);
         producto = productoOptional.get();
@@ -150,15 +151,17 @@ public class HomeController {
     }
 
     @GetMapping("/order")
-    public String order(Model model, HttpSession session) {
-
-        Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
-
-        model.addAttribute("cart", detalles);
-        model.addAttribute("orden", orden);
-        model.addAttribute("usuario", usuario);
-
-        return "usuario/resumenorden";
+    public String order(Model model, HttpSession session, RedirectAttributes attribute) {
+        try {
+            Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+            model.addAttribute("cart", detalles);
+            model.addAttribute("orden", orden);
+            model.addAttribute("usuario", usuario);
+            return "usuario/resumenorden";
+        } catch (Exception e) {
+            attribute.addFlashAttribute("error", "Inicie sesion para poder comprar");
+            return "redirect:/";
+        }
     }
 
     // guardar la orden

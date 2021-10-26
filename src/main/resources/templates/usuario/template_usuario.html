@@ -25,9 +25,19 @@
     </head>
 
     <body>
-
+        <!-- Si el usuario no ha iniciado sesion-->
         <!-- Navigation -->
         <div th:fragment="header">
+            <!--Mensajes recibidos de exito-->
+            <div class="alert alert-success alert-dismissable text-center" th:if="${success != null}">
+                <label th:text="${success}"></label>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            <!--Mensajes recibidos error-->
+            <div class="alert alert-danger alert-dismissable text-center" th:if="${error != null}">
+                <label th:text="${error}"></label>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div class="container">
                     <a class="navbar-brand" th:href="@{/}">Nombre de la tienda</a>
@@ -36,10 +46,8 @@
                         <input class="form-control mr-sm-2 text-center" type="search"
                                placeholder="Buscar productos" aria-label="Search" name="nombre"
                                autocomplete="off">
-                        <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i> Buscar</button>
                     </form>
-
-
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarResponsive" aria-controls="navbarResponsive"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -56,9 +64,19 @@
 
         </div>
 
-
+        <!--Si el usuario inicio sesion-->
         <!-- Navigation -->
         <div th:fragment="header-user">
+            <!--Mensajes recibidos de exito-->
+            <div class="alert alert-success alert-dismissable text-center" th:if="${success != null}">
+                <label th:text="${success}"></label>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+            <!--Mensajes recibidos error-->
+            <div class="alert alert-danger alert-dismissable text-center" th:if="${error != null}">
+                <label th:text="${error}"></label>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div class="container">
                     <a class="navbar-brand" th:href="@{/}">Nombre de la tienda</a>

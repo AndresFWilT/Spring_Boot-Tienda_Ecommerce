@@ -4,6 +4,9 @@
         "th:text": {
             "context": "p"
         },
+        "th:if": {
+            "context": "div"
+        },
         "th:include": {
             "context": "div"
         },

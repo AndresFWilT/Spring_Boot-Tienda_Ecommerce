@@ -27,9 +27,7 @@
     <body>
 
         <!-- Navigation -->
-        <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}">	
-        </div>
-
+        <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}"></div>
         <div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"> </div>
 
         <!-- Page Content -->
@@ -40,7 +38,7 @@
                 <h1 class="display-3">Bienvenido a nombre de la tienda</h1>
                 <p class="lead">Tu tienda de productos en Línea</p>
             </header>
-
+            
             <!-- Page Features -->
             <div class="row text-center">
                 <div class="height d-flex justify-content-center align-items-center" th:each="producto: ${productos}">
